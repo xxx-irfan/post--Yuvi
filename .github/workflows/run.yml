@@ -1,5 +1,4 @@
-yaml
-name: run Python App
+name: Run Python App
 
 on:
   push:
