@@ -1,0 +1,32 @@
+yaml
+name: Run Python App
+
+on:
+  push:
+    branches:
+      - main  # Adjust as necessary for your branch
+  workflow_dispatch:  # Allows you to manually trigger the workflow
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.8'  # Adjust to your required Python version
+
+    - name: Install dependencies
+      run: |
+        if [ -f requirements.txt ]; then
+          pip install -r requirements.txt
+        else
+          echo "No requirements.txt found"
+        fi
+
+    - name: Run C00KI3-P0ST.py
+      run: python C00KI3-P0ST.py
